@@ -19,11 +19,18 @@ public class Inscription {
 
     private String blueInscriptionDes;
 
+    private String blueInscriptionImgUrl;
+
     private String greenInscriptionName;
 
     private String greenInscriptionDes;
 
+    private String greenInscriptionImgUrl;
+
     private String redInscriptionName;
 
     private String redInscriptionDes;
+
+    private String redInscriptionImgUrl;
+
 }

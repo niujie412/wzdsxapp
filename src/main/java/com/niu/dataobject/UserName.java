@@ -14,7 +14,7 @@ public class UserName {
     @GeneratedValue
     private Integer id;
 
-    @Column(nullable = false, length = 5)
+//    @Column(nullable = false, length = 5)
     private String userName;
 
     private String passWord;

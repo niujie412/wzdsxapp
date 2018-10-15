@@ -3,8 +3,10 @@ package com.niu.controller;
 import com.niu.VO.HeroListVO;
 import com.niu.VO.ResponseVO;
 import com.niu.dataobject.Hero;
+import com.niu.dataobject.Inscription;
 import com.niu.dataobject.Skill;
 import com.niu.service.Impl.HeroServiceImpl;
+import com.niu.service.Impl.InscriptionServiceImpl;
 import com.niu.service.Impl.SkillServiceImpl;
 import com.niu.utils.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class HeroController {
 
     @Autowired
     private SkillServiceImpl skillService;
+
+    @Autowired
+    private InscriptionServiceImpl inscriptionService;
 
     @PostMapping(value = "/addhero")
     public ResponseVO addHero(@Valid Hero hero, BindingResult bindingResult) {
@@ -65,13 +70,21 @@ public class HeroController {
         for (Skill skill : skills) {
             skillService.save(skill);
         }
-
 //        if (bindingResult.hasErrors()) {
 //            return ResponseUtil.error(-1, bindingResult.getFieldError().getDefaultMessage());
 //        }
-
         return responseVO;
+    }
 
 
+    public ResponseVO addInscription(@Valid Inscription inscription,BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            return ResponseUtil.error(-1, bindingResult.getFieldError().getDefaultMessage());
+        }
+        return ResponseUtil.success(inscriptionService.save(inscription));
+    }
+
+    public ResponseVO getInscription(@RequestParam("id") Integer id){
+        return ResponseUtil.success(inscriptionService.findOne(id));
     }
 }

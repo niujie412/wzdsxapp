@@ -1,14 +1,23 @@
 server:
-  port: 8082
+  port: 8084
+web:
+  upload-path: ${user.dir}/static/images/upload/
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/wangzhe?characterEncoding=UTF-8
     username: root
-    password: root
+    password: 123456
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
     database: Mysql
     generate-ddl: true
+  mvc:
+    static-path-pattern: /**
+  resources:
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${web.upload-path}
+#  http:
+#    multipart:
+#      location: ${user.home}/static/images/upload/

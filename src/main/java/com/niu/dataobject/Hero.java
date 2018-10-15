@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Administrator on 2017/9/8.
@@ -23,6 +22,7 @@ public class Hero {
 
     private String heroName;
 
+    /**类型*/
     private String type;
 
     private String heroGold;
